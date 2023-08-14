@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>List Manipulation</title>
+</head>
+<body>
+  <ul id="myList"></ul>
+  <br>
+  <input type="text" id="itemInput" placeholder="Enter an item">
+  <button id="addItemBtn">Add Item</button>
+  <button id="removeFirstItemBtn">Remove First Item</button>
+
+  <script>
+    const myList = document.getElementById("myList");
+    const addItemBtn = document.getElementById("addItemBtn");
+    const removeFirstItemBtn = document.getElementById("removeFirstItemBtn");
+    const itemInput = document.getElementById("itemInput");
+
+    // Function to add a new item to the list
+    function addItem() {
+      const newItemText = itemInput.value;
+      // edge case (it ensures that user enter valid item)
+      if (newItemText.trim() === "") 
+      {
+        alert("Please enter an item.");
+        return;
+      }
+
+      const newItem = document.createElement("li");
+      newItem.textContent = newItemText;
+      myList.appendChild(newItem);
+
+      itemInput.value = ""; // Clear the input field
+    }
+
+    // Function to remove the first item from the list
+    function removeFirstItem() {
+      if (myList.firstChild) {
+        myList.removeChild(myList.firstChild);
+      } 
+      // edge case (it ensures that list is not empty)
+      else {
+        alert("The list is already empty.");
+      }
+    }
+
+    //  click event handlers
+    addItemBtn.addEventListener("click", addItem);
+    removeFirstItemBtn.addEventListener("click", removeFirstItem);
+
+   
+   // event listener for the input field to handle Enter key press 
+   itemInput.addEventListener("keyup", function(event) {
+      if (event.key === "Enter") {
+        addItem();
+      }
+    })
+    // event listener to the whole document to handle Enter key press
+    document.addEventListener("keyup", function(event) {
+        // if no specific element is currently focused (activeElement is the body) and event is enter.
+      if (event.key === "Enter" && document.activeElement === document.body) {
+        removeFirstItem();
+      }
+    })
+  </script>
+</body>
+</html>

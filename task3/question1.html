@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Question1</title>
+</head>
+<body>
+    <p id="currentURL"></p>
+
+    <button onclick="openNewWindow()"> Open New Window</button>
+
+    <script>
+       
+        // window => it global object created by browser  which is automatically created when browser window gets opened
+        // window object provides various method to interact with web pages.
+        // window.location =>  location object holds the information about the current URL of a web page.
+
+         // Function to display the current URL
+        function displayCurrentURL() {
+            const currentURL = window.location.href;
+            document.getElementById("currentURL").innerHTML = `Current URL : ${currentURL}`;
+        }
+        displayCurrentURL();
+
+
+        // 1.b window.open  =>  loads a specified resource into a new or existing browsing context .
+
+        // Function to open a new window
+
+        function openNewWindow() {
+            const newWindowFeatures = "width=500,height=400";
+            // window.open takes 3 parameters url , target and windowFeatures.
+            const newWindow = window.open("", "_blank", newWindowFeatures);
+            
+            // Display the current URL in the new window
+            if (newWindow) {
+                newWindow.document.write(`<p>Current URL in new window:${window.location.href} </p>`);
+            } 
+            // edge cases  (it provides feedback to user if new window can not be opened)
+            else {
+                alert("Pop-up blocker may prevent opening a new window.");
+            }
+        }
+
+    </script>
+</body>
+</html>

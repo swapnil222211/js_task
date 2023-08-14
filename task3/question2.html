@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>background color change</title>
+</head>
+<body>
+    <div id="myDiv" style="width: 400px; height: 500px; border: 1px solid black;">
+        <p>Click the button to change the background color.</p>
+    </div>
+    <button id="changeColorButton">Change Color</button>
+
+<script>
+
+// function to change background color to red 
+function changeToRed() {
+    document.getElementById("myDiv").style.backgroundColor = "red";
+}
+changeToRed();
+
+//  function to change background color to blue
+function changeToBlue() {
+    document.getElementById("myDiv").style.backgroundColor = "blue";
+}
+
+// event listener  (click)
+document.getElementById("changeColorButton").addEventListener("click", changeToBlue);
+
+</script>
+
+
+</body>
+</html>
